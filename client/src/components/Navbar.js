@@ -2,7 +2,7 @@ import { Flex, Spacer, Grid, GridItem } from '@chakra-ui/react'
 
 export default function Navbar() {
     return (
-        <div style={{width: "100%", paddingTop: "1%", paddingLeft: "1%"}}>
+        <div style={{width: "100%", paddingTop: "1%", paddingLeft: "5%"}}>
             <nav >
                 <Flex>
                     <span style={{marginRight: "5%"}}>PROJECT FIT</span>

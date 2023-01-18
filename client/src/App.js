@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import { ChakraProvider } from '@chakra-ui/react'
 import Navbar from './components/Navbar';
-import Form from './components/Form';
+import Forms from './components/Forms';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <div className="App">
 
         <Navbar/>
-        <Form />
+        <Forms />
       </div>
   </ChakraProvider>
   );
