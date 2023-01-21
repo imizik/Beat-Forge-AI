@@ -10,12 +10,12 @@ function App() {
   return (
     <ChakraProvider>
       <div className="App">
-        <Stack>
+        <Stack className="top-stack" align={"center"}>
           <Navbar/>
           <HStack className='top-ctn'>
-            <Img src={weight} className='weight'></Img>
             <Box className='middle'><MainBox/></Box>
-            <Img src={monet} className='weight'></Img>
+            <Img src={weight} className='weight'></Img>
+            {/* <Img src={monet} className='weight'></Img> */}
 
           </HStack>
           
