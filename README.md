@@ -5,7 +5,10 @@ Fitness Application Built off of chatGPT Api
 - creates workout plan catered to each specific persons needs
   Factors may include: 
     - Equiptment Availability
-    - Injuiries 
+    - Injuries  
     - Bodypart focus
-    - goals
+    - Goals
 - creates a meal plan catered to an individuals goals
+  Factors may include:
+   - Dietary Restrictions
+    
