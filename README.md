@@ -1,5 +1,5 @@
 # project-fit.ai
-Fitness Application Built off of chatGPT Api
+Fitness Application Built off of CHATGPT Api
 
 # what does it do?
 - creates workout plan catered to each specific persons needs
