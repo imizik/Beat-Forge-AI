@@ -1,13 +1,13 @@
-import { Flex, Spacer, Grid, GridItem } from '@chakra-ui/react'
-
+import { Flex, Grid, GridItem, Center } from '@chakra-ui/react'
+import './Navbar.scss'
 export default function Navbar() {
     return (
-        <div style={{width: "100%", paddingTop: "1%", paddingLeft: "1%"}}>
-            <nav >
-                <Flex>
-                    <span style={{marginRight: "5%"}}>PROJECT FIT</span>
+        <Center className='nav-ctn'>
+            <nav className='navbar'>
+                <Flex justify={"space-between"}>
+                    <span>PROJECT FIT</span>
 
-                    <Grid templateColumns='repeat(5, 1fr)' gap={6}>
+                    <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                         <GridItem w='100%'>How it works</GridItem>
                         <GridItem w='100%'>Try it out</GridItem>
                         <GridItem w='100%'>User</GridItem>
@@ -16,6 +16,6 @@ export default function Navbar() {
                 </Flex>
 
             </nav>
-        </div>
+        </Center>
     )
 }
