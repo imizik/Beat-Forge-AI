@@ -11,4 +11,6 @@ Fitness Application Built off of chatGPT Api
 - creates a meal plan catered to an individuals goals
   Factors may include:
    - Dietary Restrictions
+   - Preferences
+   - Budget 
     
