@@ -5,7 +5,7 @@ export default function MainBox() {
     return (
         <>
             <Heading as='h1' size='4xl'>
-                PROJECT-FIT.AI
+                Beat Forge
             </Heading>
             <br/>
             <Heading as='h2' size='xl'>

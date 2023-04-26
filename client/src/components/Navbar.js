@@ -5,7 +5,7 @@ export default function Navbar() {
         <Center className='nav-ctn'>
             <nav className='navbar'>
                 <Flex justify={"space-between"}>
-                    <span>PROJECT FIT</span>
+                    <span>Beat Forge.AI</span>
 
                     <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                         <GridItem w='100%'>How it works</GridItem>
