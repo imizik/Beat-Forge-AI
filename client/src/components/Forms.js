@@ -11,6 +11,7 @@ import { useState } from 'react';
 import './Forms.scss';
 import EditableArea from './EditableArea';
 import SliderPref from './SliderPref';
+import ScaleSelect from './ScaleSelect';
 
 export default function Forms() {
   const [artist, setArtist] = useState('');
@@ -18,7 +19,8 @@ export default function Forms() {
   const [bpmEnabled, setBpmEnabled] = useState(false);
   const [keyEnabled, setKeyEnabled] = useState(false);
   const [bpm, setBpm] = useState(0);
-  const [key, setKey] = useState('');
+  const [note, setNote] = useState('');
+  const [scale, setScale] = useState('');
   const [chords, setChords] = useState('');
   const [instruments, setInstruments] = useState('');
 
@@ -83,26 +85,20 @@ export default function Forms() {
             <SliderPref disabled={!bpmEnabled} setBpm={setBpm} bpm={bpm} handleEvent={handleEvent} />
           </FormControl>
           <FormControl opacity={keyEnabled ? 1 : 0.5}>
+            <FormLabel>Scale Type:</FormLabel>
+            <ScaleSelect
+              keyEnabled={keyEnabled}
+              value={scale}
+              setter={setScale}
+              selectType="scale"
+            />
             <FormLabel>Key:</FormLabel>
-            <Select
-              disabled={!keyEnabled}
-              value={key}
-              onChange={(e) => handleEvent(e, setKey)}
-              placeholder="Please select the desired key"
-            >
-              <option value="C">C</option>
-              <option value="C#">C#</option>
-              <option value="D">D</option>
-              <option value="D#">D#</option>
-              <option value="E">E</option>
-              <option value="F">F</option>
-              <option value="F#">F#</option>
-              <option value="G">G</option>
-              <option value="G#">G#</option>
-              <option value="A">A</option>
-              <option value="A#">A#</option>
-              <option value="B">B</option>
-            </Select>
+            <ScaleSelect
+              keyEnabled={keyEnabled}
+              value={note}
+              setter={setNote}
+              selectType="notes"
+            />
           </FormControl>
         </Stack>
       </Stack>

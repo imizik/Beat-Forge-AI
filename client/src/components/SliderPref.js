@@ -11,7 +11,7 @@ export default function SliderPref({ setBpm, bpm, disabled }) {
 
   return (
     <Flex>
-      <NumberInput disabled={disabled} maxW="100px" mr="2rem" value={bpm} onChange={(e) => setBpm(e)}>
+      <NumberInput disabled={!disabled} maxW="100px" mr="2rem" value={bpm} onChange={(e) => setBpm(e)}>
         <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />
