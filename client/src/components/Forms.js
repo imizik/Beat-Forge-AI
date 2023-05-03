@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import './Forms.scss';
-import EditableArea from './EditableArea';
 import SliderPref from './SliderPref';
 import ScaleSelect from './ScaleSelect';
 
@@ -23,7 +22,7 @@ export default function Forms() {
   const [scale, setScale] = useState('');
   const [chords, setChords] = useState('');
   const [instruments, setInstruments] = useState('');
-
+  
   const handleEvent = (event, setter) => {
     setter(event.target.value);
   };
@@ -82,7 +81,7 @@ export default function Forms() {
           </FormControl>
           <FormControl opacity={bpmEnabled ? 1 : 0.5}>
             <FormLabel>BPM:</FormLabel>
-            <SliderPref disabled={!bpmEnabled} setBpm={setBpm} bpm={bpm} handleEvent={handleEvent} />
+            <SliderPref disabled={bpmEnabled} setBpm={setBpm} bpm={bpm} handleEvent={handleEvent} />
           </FormControl>
           <FormControl opacity={keyEnabled ? 1 : 0.5}>
             <FormLabel>Scale Type:</FormLabel>
