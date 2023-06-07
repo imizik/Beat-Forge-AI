@@ -6,6 +6,8 @@ import Forms from './components/Forms';
 import weight from './weight.png'
 import monet from './monet.png'
 import MainBox from './components/MainBox'
+import GeneratedMain from './components/Generated/GeneratedMain';
+
 function App() {
   return (
     <ChakraProvider>
@@ -20,6 +22,7 @@ function App() {
           </HStack>
           
           <Forms />
+          <GeneratedMain />
         </Stack>
       </div>
   </ChakraProvider>

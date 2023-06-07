@@ -1,0 +1,62 @@
+.piano-grid-container {
+  display: flex;
+  height: 500px;
+  overflow: scroll;
+}
+
+.note-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-label {
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+#tabroll {
+  position: relative;
+  border: 3px solid red;
+  height: 500px;
+  flex: 1;
+  overflow: auto;
+}
+
+.note {
+  border: 1px solid black;
+  border-width: 0 1px 0 0;
+  flex: 1;
+}
+
+.string {
+  flex: 1;
+}
+
+.string:nth-child(odd) {
+  background: lightgrey;
+}
+
+.string:nth-child(even) {
+  background: grey;
+}
+
+.note-active {
+  background: red;
+  border: 1px solid black;
+  margin: -1px 0px -1px -1px;
+}
+
+.hbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+}

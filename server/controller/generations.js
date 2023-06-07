@@ -3,8 +3,7 @@ const {getGenerations} = require('../model');
 module.exports = {
     generations: async (req, res) => {  
         try {
-            console.log(req)
-            const results = await getGenerations();
+            const results = await getGenerations(req.body);
             console.log(results);
             res.status(200).send(results);
         } catch (error) {
