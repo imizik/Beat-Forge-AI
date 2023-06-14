@@ -2,42 +2,31 @@ import {
   Editable,
   EditableInput,
   EditablePreview,
-  ButtonGroup,
-  IconButton,
   Tooltip,
   Input,
-  useEditableControls,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import './Forms.scss';
 
 export default function EditableArea({ data, setData }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(data.title);
-
-  function handleEditClick() {
-    setIsEditing(true);
-  }
+  const [isediting, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(data);
 
   function handleCancelClick() {
-    setEditedTitle(data.title);
+    setEditedTitle(data);
     setIsEditing(false);
   }
 
   function handleSubmitClick() {
-    setData((prevData) => ({
-      ...prevData,
-      title: editedTitle,
-    }));
+    setData(editedTitle);
     setIsEditing(false);
   }
 
   return (
     <Editable
       value={editedTitle}
-      isEditing={isEditing}
+      isEditing={isediting}
       onChange={(value) => setEditedTitle(value)}
       onSubmit={handleSubmitClick}
       onCancel={handleCancelClick}

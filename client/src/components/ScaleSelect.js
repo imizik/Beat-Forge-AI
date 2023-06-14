@@ -1,18 +1,38 @@
 import { Select } from '@chakra-ui/react';
 import './Forms.scss';
 
-export default function ScaleSelect({ keyEnabled, value, setter, selectType }) {
-
+export default function ScaleSelect({
+  keyEnabled,
+  value,
+  setFormData,
+  selectType,
+  field,
+}) {
   const type = {
-    notes: ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"],
-    scale: ["Major", "Natural Minor", "Harmonic Minor", "Melodic Minor", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Locrian"]
-  }
+    noteType: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'],
+    scaleType: [
+      'Major',
+      'Natural Minor',
+      'Harmonic Minor',
+      'Melodic Minor',
+      'Dorian',
+      'Phrygian',
+      'Lydian',
+      'Mixolydian',
+      'Locrian',
+    ],
+  };
 
   return (
     <Select
       disabled={!keyEnabled}
       value={value}
-      onChange={(e) => setter(e.target.value)}
+      onChange={(e) =>
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [field]: e.target.value,
+        }))
+      }
     >
       {type[selectType].map((option) => (
         <option key={option} value={option}>

@@ -8,23 +8,11 @@ import {
 import { useState, useEffect } from 'react';
 import '../Forms.scss';
 import EditableArea from '../EditableArea';
-import PianoGrid from './PianoGrid';
 import * as Tone from 'tone';
-import { Interval, Note, Chord } from 'tonal';
+import { Chord } from 'tonal';
 
-export default function GeneratedMain() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState({
-    title: `Tyler's Sad Song`,
-    artist: 'Tyler',
-    vibe: 'Sad',
-    bpm: 120,
-    key: 'C Major',
-    chordProgression: ["C", "Dm", "F", "Gm"],
-    bars: 4,
-    timing: ["1m", "1m", "1m", "1m"],
-  });
-
+export default function GeneratedMain({data}) {
+  const [title, setTitle] = useState(`${data.artist}'s ${data.vibe} Song`);
   
 
   const handleGenerateClick = () => {
@@ -45,20 +33,12 @@ export default function GeneratedMain() {
     });
   };
 
-
-  const handleArtistVibeChange = (value) => {
-    setData((prevData) => ({
-      ...prevData,
-      title: value,
-    }));
-  };
   const getChordNotes = (chord, key) => {
     const chordNotes = Chord.get(chord).notes;
     const notes = chordNotes.map((note, index) => {
       const octaveOffset = note.charAt(0) < chordNotes[0][0] ? 5 : 4;
       return note + octaveOffset;
     });
-    console.log(notes);
     return notes;
   };
   
@@ -74,7 +54,7 @@ export default function GeneratedMain() {
           padding={4}
         >
           <Box marginBottom={4}>
-            <EditableArea data={data} setData={setData} />
+            <EditableArea data={title} setData={setTitle} />
             <Text>BPM: {data.bpm}</Text>
             <Text>Key: {data.key}</Text>
             <Text>
@@ -96,7 +76,6 @@ export default function GeneratedMain() {
                 </span>
               ))}
             </Text>
-            {/* <PianoGrid measures={4} quant={4}/> */}
           </Box>
           <Button colorScheme="blue" onClick={handleGenerateClick}>
             Generate

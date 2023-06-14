@@ -1,12 +1,9 @@
-import logo from './logo.svg';
 import './App.scss';
 import { ChakraProvider, Box, Stack, HStack, Img } from '@chakra-ui/react'
 import Navbar from './components/Navbar';
-import Forms from './components/Forms';
 import weight from './weight.png'
-import monet from './monet.png'
-import MainBox from './components/MainBox'
-import GeneratedMain from './components/Generated/GeneratedMain';
+import MainBox from './components/Description'
+import Forge from './components/Forge';
 
 function App() {
   return (
@@ -21,8 +18,7 @@ function App() {
 
           </HStack>
           
-          <Forms />
-          <GeneratedMain />
+          <Forge />
         </Stack>
       </div>
   </ChakraProvider>
