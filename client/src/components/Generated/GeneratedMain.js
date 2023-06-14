@@ -20,7 +20,7 @@ export default function GeneratedMain() {
     vibe: 'Sad',
     bpm: 120,
     key: 'C Major',
-    chordProgression: ["Cmaj7", "Fmaj7", "G7", "Am7"],
+    chordProgression: ["C", "Dm", "F", "Gm"],
     bars: 4,
     timing: ["1m", "1m", "1m", "1m"],
   });
@@ -53,8 +53,9 @@ export default function GeneratedMain() {
     }));
   };
   const getChordNotes = (chord, key) => {
-    const notes = Chord.get(chord).notes.map((note, index) => {
-      const octaveOffset = note.charAt(0) < notes[0][0] ? 5 : 4;
+    const chordNotes = Chord.get(chord).notes;
+    const notes = chordNotes.map((note, index) => {
+      const octaveOffset = note.charAt(0) < chordNotes[0][0] ? 5 : 4;
       return note + octaveOffset;
     });
     console.log(notes);
