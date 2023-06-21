@@ -28,35 +28,20 @@ To run the BeatForge application locally, follow these steps:
 1. Clone the repository:
 git clone https://github.com/your-username/beatforge.git
 
-markdown
-Copy code
-
 2. Install dependencies:
 cd beatforge
 npm install
 
-javascript
-Copy code
-
 3. Set up the environment variables:
 cp .env.example .env
-
-markdown
-Copy code
 
 Make sure to provide the necessary environment variables in the `.env` file.
 
 4. Start the development server:
 npm start
 
-markdown
-Copy code
-
 5. Open the application in your browser:
 http://localhost:3000
-
-markdown
-Copy code
 
 ## Contributing
 
