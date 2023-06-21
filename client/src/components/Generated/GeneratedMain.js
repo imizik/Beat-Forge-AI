@@ -1,34 +1,31 @@
-import {
-  Button,
-  Stack,
-  Center,
-  Text,
-  Box
-} from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
+import { Button, Stack, Center, Text, Box, Flex, IconButton } from '@chakra-ui/react';
+import { useState } from 'react';
 import '../Forms.scss';
 import EditableArea from '../EditableArea';
 import * as Tone from 'tone';
 import { Chord } from 'tonal';
+import { ArrowBackIcon, PlayIcon } from "@chakra-ui/icons";
+import { FaPlay } from "react-icons/fa";
 
-export default function GeneratedMain({data}) {
+export default function GeneratedMain({ data, onGoBack }) {
   const [title, setTitle] = useState(`${data.artist}'s ${data.vibe} Song`);
-  
 
   const handleGenerateClick = () => {
     const synth = new Tone.PolySynth().toDestination();
-    const chordNotes = data.chordProgression.map(chord => getChordNotes(chord, data.key));
+    const chordNotes = data.chordProgression.map((chord) =>
+      getChordNotes(chord, data.key)
+    );
     const now = Tone.now();
     const secondsPerBeat = 60 / data.bpm; // Calculate the duration of one beat in seconds
     let cumulativeTime = 0; // Initialize cumulative time
-  
+
     data.timing.forEach((timing, index) => {
       const chord = chordNotes[index];
-      const duration = secondsPerBeat * (Tone.Time(timing).toSeconds()); // Calculate the duration of the chord in seconds
+      const duration = secondsPerBeat * Tone.Time(timing).toSeconds(); // Calculate the duration of the chord in seconds
       const delayTime = now + cumulativeTime + 1; // Add cumulative time and delay
-  
+
       synth.triggerAttackRelease(chord, duration, delayTime);
-  
+
       cumulativeTime += duration; // Add the duration of the current chord to cumulative time
     });
   };
@@ -41,7 +38,6 @@ export default function GeneratedMain({data}) {
     });
     return notes;
   };
-  
 
   return (
     <Center className="forms-ctn">
@@ -77,9 +73,25 @@ export default function GeneratedMain({data}) {
               ))}
             </Text>
           </Box>
-          <Button colorScheme="blue" onClick={handleGenerateClick}>
-            Generate
-          </Button>
+          <Flex justify="space-between">
+            <IconButton
+              aria-label="Go back"
+              icon={<ArrowBackIcon />}
+              colorScheme="whiteAlpha"
+              variant="ghost"
+              onClick={onGoBack}
+              _hover={{ color: 'teal.500' }}
+            />
+
+            <Button
+              leftIcon={<FaPlay  />}
+              colorScheme="purple"
+              onClick={handleGenerateClick}
+              _hover={{ bg: 'purple.500' }}
+            >
+              Play Sound
+            </Button>
+          </Flex>
         </Stack>
       </Stack>
     </Center>

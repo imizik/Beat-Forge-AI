@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function Forge() {
   const [isLoading, setIsLoading] = useState(false);
   const [generatedData, setGeneratedData] = useState(null);
+  const [isGenerated, setIsGenerated] = useState(false);
   const [formData, setFormData] = useState({
     artist: '',
     vibe: '',
@@ -28,15 +29,20 @@ export default function Forge() {
       console.log(error);
     } finally {
       setIsLoading(false);
+      setIsGenerated(true);
     }
+  };
+
+  const handleGoBack = () => {
+    setIsGenerated(false);
   };
 
   return (
     <>
-      {generatedData ? (
-        <GeneratedMain data={generatedData} />
+      {isGenerated ? (
+        <GeneratedMain data={generatedData} onGoBack={handleGoBack} />
       ) : (
-        <Forms onSubmit={handleSubmit} isLoading={isLoading} formData={formData} setFormData={setFormData}/>
+        <Forms onSubmit={handleSubmit} isLoading={isLoading} formData={formData} setFormData={setFormData} />
       )}
     </>
   );
