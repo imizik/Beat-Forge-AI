@@ -1,5 +1,5 @@
-import GeneratedMain from './Generated/GeneratedMain';
-import Forms from './Forms';
+import {GeneratedMain} from './GeneratedMain';
+import {Forms} from './Forms';
 import {useState} from 'react';
 import axios from 'axios';
 

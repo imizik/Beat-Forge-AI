@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import './Forms.scss';
+import '../index.css';
 
 export default function EditableArea({ data, setData }) {
   const [isediting, setIsEditing] = useState(false);

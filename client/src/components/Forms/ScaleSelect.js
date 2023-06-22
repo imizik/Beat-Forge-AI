@@ -1,5 +1,5 @@
 import { Select } from '@chakra-ui/react';
-import './Forms.scss';
+import '../../index.css';
 
 export default function ScaleSelect({
   keyEnabled,

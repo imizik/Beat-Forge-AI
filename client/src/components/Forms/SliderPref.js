@@ -6,7 +6,8 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react';
-import './Forms.scss';
+import '../../index.css';
+
 export default function SliderPref({ setFormData, bpm, disabled }) {
   return (
     <Flex>

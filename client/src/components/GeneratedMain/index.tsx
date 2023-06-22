@@ -1,43 +1,24 @@
 import { Button, Stack, Center, Text, Box, Flex, IconButton } from '@chakra-ui/react';
-import { useState } from 'react';
-import '../Forms.scss';
+import React, { useState } from 'react';
+import '../../index.css';
 import EditableArea from '../EditableArea';
-import * as Tone from 'tone';
-import { Chord } from 'tonal';
-import { ArrowBackIcon, PlayIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import { FaPlay } from "react-icons/fa";
+import { getChordNotes } from '../../utils/getChordNotes';
+import { useSynth } from '../../hooks/useSynth';
+import { GeneratedMainComponent } from './types';
 
-export default function GeneratedMain({ data, onGoBack }) {
+export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
   const [title, setTitle] = useState(`${data.artist}'s ${data.vibe} Song`);
+  const synth = useSynth();
 
   const handleGenerateClick = () => {
-    const synth = new Tone.PolySynth().toDestination();
     const chordNotes = data.chordProgression.map((chord) =>
       getChordNotes(chord, data.key)
     );
-    const now = Tone.now();
-    const secondsPerBeat = 60 / data.bpm; // Calculate the duration of one beat in seconds
-    let cumulativeTime = 0; // Initialize cumulative time
-
-    data.timing.forEach((timing, index) => {
-      const chord = chordNotes[index];
-      const duration = secondsPerBeat * Tone.Time(timing).toSeconds(); // Calculate the duration of the chord in seconds
-      const delayTime = now + cumulativeTime + 1; // Add cumulative time and delay
-
-      synth.triggerAttackRelease(chord, duration, delayTime);
-
-      cumulativeTime += duration; // Add the duration of the current chord to cumulative time
-    });
+    synth.playChordNotes(chordNotes, data.timing, data.bpm);
   };
 
-  const getChordNotes = (chord, key) => {
-    const chordNotes = Chord.get(chord).notes;
-    const notes = chordNotes.map((note, index) => {
-      const octaveOffset = note.charAt(0) < chordNotes[0][0] ? 5 : 4;
-      return note + octaveOffset;
-    });
-    return notes;
-  };
 
   return (
     <Center className="forms-ctn">

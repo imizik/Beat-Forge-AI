@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "strict": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "jsx": "react",
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "resolveJsonModule": true,
+      "baseUrl": "./src",
+      "paths": {
+        "@/*": ["*"]
+      },
+      "declaration": true,
+      "sourceMap": true,
+      "outDir": "dist"
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  }
