@@ -1,13 +1,17 @@
-import {GeneratedMain} from './GeneratedMain';
-import {Forms} from './Forms';
-import {useState} from 'react';
+import { GeneratedMain } from './GeneratedMain';
+import { Forms } from './Forms';
+import { useState } from 'react';
 import axios from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
+import { FormData } from './Forms/types';
+import { GenerationData } from './types';
 
-export default function Forge() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [generatedData, setGeneratedData] = useState(null);
-  const [isGenerated, setIsGenerated] = useState(false);
-  const [formData, setFormData] = useState({
+
+function Forge() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [generatedData, setGeneratedData] = useState<GenerationData | null>(null);
+  const [isGenerated, setIsGenerated] = useState<boolean>(false);
+  const [formData, setFormData] = useState<FormData>({
     artist: '',
     vibe: '',
     bpmEnabled: false,
@@ -17,16 +21,23 @@ export default function Forge() {
     scale: '',
   });
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async (data: FormData) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
+      const response: AxiosResponse<GenerationData> = await axios.post(
         'http://localhost:3080/generations',
         data
       );
       setGeneratedData(response.data);
-    } catch (error) {
-      console.log(error);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError;
+        if (serverError && serverError.response) {
+          console.log(serverError.response.data);
+        }
+      } else {
+        console.log((error as Error).message);
+      }
     } finally {
       setIsLoading(false);
       setIsGenerated(true);
@@ -47,3 +58,5 @@ export default function Forge() {
     </>
   );
 }
+
+export default Forge;

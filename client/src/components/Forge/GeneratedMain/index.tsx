@@ -1,11 +1,11 @@
 import { Button, Stack, Center, Text, Box, Flex, IconButton } from '@chakra-ui/react';
 import { useState } from 'react';
 import '../../../index.css';
-import EditableArea from '../EditableArea';
+import EditableArea from '../../EditableArea';
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { FaPlay } from "react-icons/fa";
-import { getChordNotes } from '../../utils/getChordNotes';
-import { useSynth } from '../../hooks/useSynth';
+import { getChordNotes } from '../../../utils/getChordNotes';
+import { useSynth } from '../../../hooks/useSynth';
 import { GeneratedMainComponent } from './types';
 
 export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
@@ -14,7 +14,7 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
 
   const handleGenerateClick = () => {
     const chordNotes = data.chordProgression.map((chord) =>
-      getChordNotes(chord, data.key)
+      getChordNotes(chord)
     );
     synth.playChordNotes(chordNotes, data.timing, data.bpm);
   };
