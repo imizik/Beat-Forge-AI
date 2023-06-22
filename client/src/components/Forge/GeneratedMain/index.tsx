@@ -1,11 +1,11 @@
 import { Button, Stack, Center, Text, Box, Flex, IconButton } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import '../../index.css';
+import { useState } from 'react';
+import '../../../index.css';
 import EditableArea from '../EditableArea';
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { FaPlay } from "react-icons/fa";
 import { getChordNotes } from '../../utils/getChordNotes';
-import { useSynth } from '../../../../client/src/hooks/useSynth';
+import { useSynth } from '../../hooks/useSynth';
 import { GeneratedMainComponent } from './types';
 
 export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {

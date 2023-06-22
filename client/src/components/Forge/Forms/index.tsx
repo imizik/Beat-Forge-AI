@@ -7,11 +7,11 @@ import {
   FormLabel,
   Checkbox,
 } from '@chakra-ui/react';
-import '../../index.css';
+import '../../../index.css';
 import SliderPref from './SliderPref';
 import ScaleSelect from './ScaleSelect';
 import { FormsComponent } from './types';
-import { useHandleEvent, useHandleChecked, useHandleSubmit } from '../../../../prevclient/src/hooks/useForms';
+import { useHandleEvent, useHandleChecked, useHandleSubmit } from '../../hooks/useForms';
 
 export const Forms: FormsComponent = ({ onSubmit, isLoading, formData, setFormData }) => {
   const handleEvent = useHandleEvent(setFormData);

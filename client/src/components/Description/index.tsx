@@ -1,5 +1,5 @@
 import {Heading, Text} from '@chakra-ui/react'
-import './MainBox.scss'
+import './MainBox.css'
 
 export default function MainBox() {
     return (

@@ -1,5 +1,5 @@
 import { Flex, Grid, GridItem, Center } from '@chakra-ui/react'
-import './Navbar.scss'
+import '../index.css'
 export default function Navbar() {
     return (
         <Center className='nav-ctn'>
