@@ -3,7 +3,7 @@ import { Forms } from './Forms';
 import { useState } from 'react';
 import axios from 'axios';
 import { AxiosError, AxiosResponse } from 'axios';
-import { FormData } from './Forms/types';
+import { FormData } from '../../hooks/types';
 import { GenerationData } from './types';
 
 
@@ -50,7 +50,7 @@ function Forge() {
 
   return (
     <>
-      {isGenerated ? (
+      {isGenerated && generatedData !== null ? (
         <GeneratedMain data={generatedData} onGoBack={handleGoBack} />
       ) : (
         <Forms onSubmit={handleSubmit} isLoading={isLoading} formData={formData} setFormData={setFormData} />

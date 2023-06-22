@@ -1,13 +1,9 @@
+
 import { Select } from '@chakra-ui/react';
 import '../../../index.css';
+import { ScaleSelectComponent} from './types';
 
-export default function ScaleSelect({
-  keyEnabled,
-  value,
-  setFormData,
-  selectType,
-  field,
-}) {
+export const ScaleSelect: ScaleSelectComponent = ({ keyEnabled, value, setFormData, selectType, field }) => {
   const type = {
     noteType: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'],
     scaleType: [

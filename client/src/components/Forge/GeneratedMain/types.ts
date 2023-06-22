@@ -1,4 +1,5 @@
-import { FunctionComponent } from "react"
+import { Dispatch, SetStateAction, FunctionComponent } from 'react';
+
 
 interface GeneratedMainProps {
     data: {
@@ -14,3 +15,10 @@ interface GeneratedMainProps {
   }
 
 export type GeneratedMainComponent = FunctionComponent<GeneratedMainProps>
+
+interface EditableAreaProps {
+  data: string;
+  setData: Dispatch<SetStateAction<string>>;
+}
+
+export type EditableAreaComponent = FunctionComponent<EditableAreaProps>

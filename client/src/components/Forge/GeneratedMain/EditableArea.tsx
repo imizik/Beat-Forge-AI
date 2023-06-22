@@ -7,26 +7,23 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import '../index.css';
+import '../../../index.css';
+import { EditableAreaComponent } from './types';
 
-export default function EditableArea({ data, setData }) {
-  const [isediting, setIsEditing] = useState(false);
+export const EditableArea: EditableAreaComponent = ({ data, setData }) => {
   const [editedTitle, setEditedTitle] = useState(data);
 
   function handleCancelClick() {
     setEditedTitle(data);
-    setIsEditing(false);
   }
 
   function handleSubmitClick() {
     setData(editedTitle);
-    setIsEditing(false);
   }
 
   return (
     <Editable
       value={editedTitle}
-      isEditing={isediting}
       onChange={(value) => setEditedTitle(value)}
       onSubmit={handleSubmitClick}
       onCancel={handleCancelClick}

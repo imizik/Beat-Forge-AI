@@ -8,8 +8,8 @@ import {
   Checkbox,
 } from '@chakra-ui/react';
 import '../../../index.css';
-import SliderPref from './SliderPref';
-import ScaleSelect from './ScaleSelect';
+import {SliderPref} from './SliderPref';
+import {ScaleSelect} from './ScaleSelect';
 import { FormsComponent } from './types';
 import { useHandleEvent, useHandleChecked, useHandleSubmit } from '../../../hooks/useForms';
 

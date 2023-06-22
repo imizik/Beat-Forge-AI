@@ -1,3 +1,4 @@
+
 import {
   NumberInput,
   Flex,
@@ -7,19 +8,20 @@ import {
   NumberDecrementStepper,
 } from '@chakra-ui/react';
 import '../../../index.css';
+import { SliderPrefComponent } from './types';
 
-export default function SliderPref({ setFormData, bpm, disabled }) {
+export const SliderPref: SliderPrefComponent = ({ setFormData, bpm, disabled }) => {
   return (
     <Flex>
       <NumberInput
-        disabled={!disabled}
+        isDisabled={!disabled}
         maxW="100px"
         mr="2rem"
         value={bpm}
         onChange={(e) =>
           setFormData((prevFormData) => ({
             ...prevFormData,
-            bpm: e,
+            bpm: Number(e),
           }))
         }
       >

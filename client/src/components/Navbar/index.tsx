@@ -1,6 +1,10 @@
 import { Flex, Grid, GridItem, Center } from '@chakra-ui/react'
-import '../index.css'
-export default function Navbar() {
+import '../../../index.css'
+import { FunctionComponent } from 'react';
+
+type NavbarComponent = FunctionComponent;
+
+export const Navbar: NavbarComponent = () => {
     return (
         <Center className='nav-ctn'>
             <nav className='navbar'>

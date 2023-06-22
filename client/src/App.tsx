@@ -1,6 +1,6 @@
 import './App.css';
 import { ChakraProvider, Box, Stack, HStack, Img } from '@chakra-ui/react'
-import Navbar from './components/Navbar';
+import {Navbar} from './components/Navbar';
 import weight from './assets/weight.png'
 import MainBox from './components/Description'
 import Forge from './components/Forge';
