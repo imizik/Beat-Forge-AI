@@ -1,28 +1,22 @@
 import './App.css';
-import { ChakraProvider, Box, Stack, HStack, Img } from '@chakra-ui/react'
-import {Navbar} from './components/Navbar';
-import weight from './assets/weight.png'
-import MainBox from './components/Description'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from "./theme";
+import { LandingPage } from './components/Landing Page';
 import Forge from './components/Forge';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <ChakraProvider>
-      <div className="App">
-        <Stack className="top-stack" align={"center"}>
-          <Navbar/>
-          <HStack className='top-ctn'>
-            <Box className='middle'><MainBox/></Box>
-            <Img src={weight} className='weight'></Img>
-            {/* <Img src={monet} className='weight'></Img> */}
-
-          </HStack>
-          
-          <Forge />
-        </Stack>
-      </div>
-  </ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={ <LandingPage /> }/>
+            <Route path="/forge" element={ <Forge /> }/>
+          </Routes>
+        </div>
+      </Router>
+    </ChakraProvider>
   );
 }
-
 export default App;

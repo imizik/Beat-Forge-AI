@@ -53,3 +53,19 @@ option {
 .navbar {
   width: 95%;
 }
+
+.weight {
+  width: 35%;
+  opacity: 60%;
+}
+.middle {
+  width: 60%;
+}
+.top-ctn {
+  width: 80%;
+  height: 100vh;
+}
+
+.top-stack {
+  width: 100%;
+}
