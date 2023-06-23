@@ -1,5 +1,5 @@
 import { Flex, Grid, GridItem, Center } from '@chakra-ui/react'
-import '../../../index.css'
+import '../../index.css'
 import { FunctionComponent } from 'react';
 
 type NavbarComponent = FunctionComponent;
