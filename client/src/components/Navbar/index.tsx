@@ -1,25 +1,63 @@
-import { Flex, Grid, GridItem, Center } from '@chakra-ui/react'
-import '../../index.css'
-import { FunctionComponent } from 'react';
+import { Flex, Box, Spacer, IconButton } from '@chakra-ui/react';
+import { useState, useEffect,  } from 'react';
+import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 
-type NavbarComponent = FunctionComponent;
+type NavbarProps = {
+  topCtnRef: React.RefObject<HTMLDivElement>;
+};
 
-export const Navbar: NavbarComponent = () => {
-    return (
-        <Center className='nav-ctn'>
-            <nav className='navbar'>
-                <Flex justify={"space-between"}>
-                    <span>Beat Forge.AI</span>
+export const Navbar = ({ topCtnRef }: NavbarProps) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-                    <Grid templateColumns='repeat(3, 1fr)' gap={6}>
-                        <GridItem w='100%'>How it works</GridItem>
-                        <GridItem w='100%'>Try it out</GridItem>
-                        <GridItem w='100%'>User</GridItem>
-                    </Grid>
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  };
 
-                </Flex>
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-            </nav>
-        </Center>
-    )
-}
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  let colorChangePoint = 0;
+  // if (topCtnRef.current) {
+  //   const topCtnHeight = topCtnRef.current.offsetHeight;
+  //   const topCtnOffsetTop = topCtnRef.current.offsetTop;
+  //   colorChangePoint = topCtnOffsetTop + topCtnHeight;
+  // }
+
+  return (
+    <Flex
+      as="nav"
+      className="navbar"
+      bg={scrollPosition > colorChangePoint ? 'white' : 'primary.main'} 
+      color={scrollPosition > colorChangePoint ? 'black' : 'text.primary'} 
+      transition="background-color 0.5s, color 0.5s"
+      position="fixed"
+      w="100%"
+      zIndex="1000"
+    >
+      <Box p="2">
+        <Link to="/">
+          <Box as="span" fontSize="xl" fontWeight="bold">
+            Beat Forge.AI
+          </Box>
+        </Link>
+      </Box>
+      <Spacer />
+      <Box>
+        <IconButton
+          as={Link}
+          to="/user"
+          aria-label="User settings"
+          icon={<FaUserCircle />}
+          size="lg"
+        />
+      </Box>
+    </Flex>
+  );
+};

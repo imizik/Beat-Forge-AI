@@ -12,6 +12,55 @@ code {
     monospace;
 }
 
+/* LandingPage */
+.top-stack {
+  width: 100%;
+  height: 200vh;
+}
+.asd{
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+.weight {
+  width: 35%;
+  opacity: 60%;
+}
+.middle {
+  width: 60%;
+}
+.top-ctn {
+  width: 100%;
+}
+
+/* NavBar */
+
+.nav-ctn {
+  width: 80%;
+}
+
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.7rem 8rem;
+
+}
+
+.navbar--scrolled {
+  background-color: white;
+  color: black;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #727171; /* This can be replaced with your primary color */
+}
+
+/* GeneratedMain */
+
 .stack-ctn {
   width: 50%;
   padding: 2%;
@@ -24,48 +73,11 @@ code {
 
 .forms-ctn {
   width: 100%;
-  background-color: #1F2833;
-  color: white;
 }
 
 option {
   color: black;
 }
 
-.edit {
-  border: 1px solid #CBD5E0;
-  width: 100%;
-  margin-bottom: 1%;
-  min-height: 50px;
 
-}
 
-.in_edit {
-  min-height: 100px;
-}
-
-.nav-ctn {
-  width: 80%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-}
-
-.navbar {
-  width: 95%;
-}
-
-.weight {
-  width: 35%;
-  opacity: 60%;
-}
-.middle {
-  width: 60%;
-}
-.top-ctn {
-  width: 80%;
-  height: 100vh;
-}
-
-.top-stack {
-  width: 100%;
-}

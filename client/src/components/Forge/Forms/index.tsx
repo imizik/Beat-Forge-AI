@@ -20,7 +20,7 @@ export const Forms: FormsComponent = ({ onSubmit, isLoading, formData, setFormDa
 
 
   return (
-    <Center className="forms-ctn">
+    <Center className="forms-ctn" bg="primary.main" color="text.primary">
       {isLoading && (
         <div className="loader-container">
           <div className="loader" />

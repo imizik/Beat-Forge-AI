@@ -28,7 +28,7 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
   };
 
   return (
-    <Center className="forms-ctn">
+    <Center className="forms-ctn" bg="primary.main" color="text.primary">
       <Stack className="stack-ctn">
         <Stack
           className="stack-inner"
