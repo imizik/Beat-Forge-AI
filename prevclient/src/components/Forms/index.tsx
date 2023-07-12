@@ -7,30 +7,17 @@ import {
   FormLabel,
   Checkbox,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import './Forms.scss';
+import '../../index.css';
 import SliderPref from './SliderPref';
 import ScaleSelect from './ScaleSelect';
+import { FormsComponent } from './types';
+import { useHandleEvent, useHandleChecked, useHandleSubmit } from '../../../../prevclient/src/hooks/useForms';
 
-export default function Forms({ onSubmit, isLoading, formData, setFormData }) {
-  const handleEvent = (event, field) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [field]: event.target.value,
-    }));
-  };
+export const Forms: FormsComponent = ({ onSubmit, isLoading, formData, setFormData }) => {
+  const handleEvent = useHandleEvent(setFormData);
+  const handleChecked = useHandleChecked(setFormData);
+  const handleSubmit = useHandleSubmit(onSubmit, formData);
 
-  const handleChecked = (event, field) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [field]: event.target.checked,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    onSubmit(formData);
-  };
 
   return (
     <Center className="forms-ctn">
