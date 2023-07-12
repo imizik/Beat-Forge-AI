@@ -12,7 +12,7 @@ const theme = extendTheme({
       main: "#212121",
     },
     text: {
-      primary: "#CFD8DC",
+      primary: "white",
       secondary: "#90A4AE",
     },
     button: {

@@ -13,33 +13,47 @@ code {
 }
 
 /* LandingPage */
+
 .main-stack {
   width: 100%;
 }
 
-.top-box {
+.top-ctn {
+  width: 100%;
   height: 100vh;
+  justify-content: space-between;
 }
 
 .asd{
   width: 100%;
   background-color: #f5f5f5;
 }
+
 .wave {
   width: 45%; 
   opacity: 90%;
 }
+
 .middle {
-  width: 60%;
-}
-.top-ctn {
   width: 100%;
 }
+
+.content-box {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description {
+  width: 100%;
+}
+
 
 /* NavBar */
 
 .nav-ctn {
-  width: 80%;
+  width: 100%;
 }
 
 .navbar {
@@ -48,19 +62,17 @@ code {
   top: 0;
   z-index: 100;
   padding: 0.7rem 8rem;
-
 }
 
-.navbar--scrolled {
-  background-color: white;
-  color: black;
-}
+
 
 .logo {
+  display: flex;
+  align-items: center;  /* This aligns the text and icon in a line */
   font-weight: bold;
   font-size: 1.5em;
-  color: #727171; /* This can be replaced with your primary color */
 }
+
 
 /* GeneratedMain */
 

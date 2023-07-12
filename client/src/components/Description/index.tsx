@@ -5,7 +5,7 @@ export default function MainBox() {
     return (
         <Box width="90%" pl="6rem">
             <Heading as='h1' size='4xl' color="text.primary" textAlign="center">
-            The Anvil <br/>of <br/>Auditory Artistry
+            The Anvil for <br/>Auditory Artistry
             </Heading>
             <br/>
             {/* <Heading as='h2' size='md'  color="text.secondary" textAlign="left">

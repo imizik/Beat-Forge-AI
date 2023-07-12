@@ -1,17 +1,15 @@
-import { Flex, Box, Spacer, IconButton } from '@chakra-ui/react';
-import { useState, useEffect,  } from 'react';
+import { Flex, Box, Spacer, Icon, HStack, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
+import { TbSquareRotated } from 'react-icons/tb';
+import { SiDiscogs } from 'react-icons/si';
+import { useState, useEffect } from 'react';
 
-type NavbarProps = {
-  topCtnRef: React.RefObject<HTMLDivElement>;
-};
-
-export const Navbar = ({ topCtnRef }: NavbarProps) => {
+export const Navbar = () => {
+  const breakpoint = useBreakpointValue({ base: '56px', md: '64px' });
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = () => {
-    const position = window.scrollY;
+    const position = window.pageYOffset;
     setScrollPosition(position);
   };
 
@@ -23,40 +21,37 @@ export const Navbar = ({ topCtnRef }: NavbarProps) => {
     };
   }, []);
 
-  let colorChangePoint = 0;
-  // if (topCtnRef.current) {
-  //   const topCtnHeight = topCtnRef.current.offsetHeight;
-  //   const topCtnOffsetTop = topCtnRef.current.offsetTop;
-  //   colorChangePoint = topCtnOffsetTop + topCtnHeight;
-  // }
+  const bgColor = useColorModeValue('white', 'primary.main');
+  const textColor = useColorModeValue('black', 'text.primary');
 
   return (
     <Flex
       as="nav"
-      className="navbar"
-      bg={scrollPosition > colorChangePoint ? 'white' : 'primary.main'} 
-      color={scrollPosition > colorChangePoint ? 'black' : 'text.primary'} 
-      transition="background-color 0.5s, color 0.5s"
-      position="fixed"
+      bg={scrollPosition > 50 ? bgColor : 'primary.main'}
+      color={scrollPosition > 50 ? textColor : 'text.primary'}
+      position="sticky"
+      top={0}
       w="100%"
-      zIndex="1000"
+      h={breakpoint}  // Set a fixed height
+      zIndex={1000}
+      align="center"   // Ensure vertical alignment
+      justify="space-between"   // This ensures equal spacing around items
+      px={8}  // Set the padding around items
+      transition='0.8s'
     >
-      <Box p="2">
-        <Link to="/">
-          <Box as="span" fontSize="xl" fontWeight="bold">
+      <Box>
+        <Link to="/" className="logo">
+          <Icon as={SiDiscogs} boxSize={6} />
+          <Text as="span" fontSize="xl" fontWeight="bold" ml={2}>
             Beat Forge.AI
-          </Box>
+          </Text>
         </Link>
       </Box>
-      <Spacer />
-      <Box>
-        <IconButton
-          as={Link}
-          to="/user"
-          aria-label="User settings"
-          icon={<FaUserCircle />}
-          size="lg"
-        />
+      <Box as={Link} to="/user">
+        <HStack>
+          <Text fontSize="lg">Menu</Text>
+          <Icon as={TbSquareRotated} boxSize={6} />
+        </HStack>
       </Box>
     </Flex>
   );
