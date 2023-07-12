@@ -14,7 +14,7 @@ code {
 
 /* LandingPage */
 
-.main-stack {
+/* .main-stack {
   width: 100%;
 }
 
@@ -24,10 +24,6 @@ code {
   justify-content: space-between;
 }
 
-.asd{
-  width: 100%;
-  background-color: #f5f5f5;
-}
 
 .wave {
   width: 45%; 
@@ -47,12 +43,22 @@ code {
 
 .description {
   width: 100%;
+} */
+
+.custom-heading {
+  font-size: 15rem; /* Adjust the size as per your requirements */
 }
+
+.asd{
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
 
 
 /* NavBar */
 
-.nav-ctn {
+/* .nav-ctn {
   width: 100%;
 }
 
@@ -63,7 +69,7 @@ code {
   z-index: 100;
   padding: 0.7rem 8rem;
 }
-
+ */
 
 
 .logo {

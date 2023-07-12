@@ -1,4 +1,12 @@
-import { Flex, Box, Spacer, Icon, HStack, Text, useBreakpointValue, useColorModeValue } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Icon,
+  HStack,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { TbSquareRotated } from 'react-icons/tb';
 import { SiDiscogs } from 'react-icons/si';
@@ -32,12 +40,12 @@ export const Navbar = () => {
       position="sticky"
       top={0}
       w="100%"
-      h={breakpoint}  // Set a fixed height
+      h={breakpoint} // Set a fixed height
       zIndex={1000}
-      align="center"   // Ensure vertical alignment
-      justify="space-between"   // This ensures equal spacing around items
-      px={8}  // Set the padding around items
-      transition='0.8s'
+      align="center" // Ensure vertical alignment
+      justify="space-between" // This ensures equal spacing around items
+      px={8} // Set the padding around items
+      transition="0.8s"
     >
       <Box>
         <Link to="/" className="logo">
