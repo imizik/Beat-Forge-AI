@@ -8,7 +8,7 @@ import MainSection from './MainSection';
 export const LandingPage = () => {
   return (
     <VStack align="start" bg="primary.main" spacing={0} width="100%">
-      <Navbar />
+      <Navbar bgProp="primary.main"/>
       <LandingDesc />
       <MainSection />
       {/* <CTASection />
