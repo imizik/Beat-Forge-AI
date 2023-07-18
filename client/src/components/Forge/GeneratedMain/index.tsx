@@ -1,9 +1,7 @@
 import {
   Button,
   Stack,
-  Center,
   Text,
-  Box,
   Flex,
   IconButton,
 } from '@chakra-ui/react';

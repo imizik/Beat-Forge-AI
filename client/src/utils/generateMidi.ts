@@ -17,7 +17,7 @@ export const generateMidi = ({ chordProgression, timing }: MidiGenerationData): 
       duration = '1';
     }
     console.log(chordNotes, duration)
-    track.addEvent(new MidiWriter.NoteEvent({ pitch: chordNotes, duration: duration }));
+    track.addEvent(new MidiWriter.NoteEvent({ pitch: chordNotes as any, duration: duration as any }));
   });
 
   const write = new MidiWriter.Writer(track);
