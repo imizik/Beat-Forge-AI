@@ -2,6 +2,7 @@ import { VStack } from '@chakra-ui/react';
 import { Navbar } from '../Navbar';
 import LandingDesc from './LandingDesc';
 import MainSection from './MainSection';
+import { Footer } from '../Footer';
 // import CTASection from './CTASection';
 // import Footer from './Footer';
 
@@ -11,8 +12,8 @@ export const LandingPage = () => {
       <Navbar bgProp="primary.main"/>
       <LandingDesc />
       <MainSection />
-      {/* <CTASection />
-      <Footer /> */}
+      {/* <CTASection /> */}
+      <Footer />
     </VStack>
   );
 };

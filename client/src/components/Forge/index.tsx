@@ -19,8 +19,8 @@ const mockdata = {
 
 function Forge() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [generatedData, setGeneratedData] = useState<GenerationData | null>(null);
-  const [isGenerated, setIsGenerated] = useState<boolean>(false);
+  const [generatedData, setGeneratedData] = useState<GenerationData | null>(mockdata);
+  const [isGenerated, setIsGenerated] = useState<boolean>(true);
   const [formData, setFormData] = useState<FormData>({
     artist: '',
     vibe: '',
