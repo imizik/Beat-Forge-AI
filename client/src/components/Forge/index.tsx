@@ -19,8 +19,8 @@ const mockdata = {
 
 function Forge() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [generatedData, setGeneratedData] = useState<GenerationData | null>(mockdata);
-  const [isGenerated, setIsGenerated] = useState<boolean>(true);
+  const [generatedData, setGeneratedData] = useState<GenerationData | null>(null);
+  const [isGenerated, setIsGenerated] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     artist: '',
     vibe: '',
@@ -35,7 +35,7 @@ function Forge() {
     setIsLoading(true);
     try {
       const response: AxiosResponse<GenerationData> = await axios.post(
-        'http://localhost:3080/generations',
+        'http://localhost:8080/api/generations',
         data
       );
       setGeneratedData(response.data);
