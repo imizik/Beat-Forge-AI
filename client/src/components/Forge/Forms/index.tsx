@@ -29,9 +29,9 @@ export const Forms: FormsComponent = ({
   const handleSubmit = useHandleSubmit(onSubmit, formData);
 
   return (
-    <Stack width="100%" height="100vh" bg="primary.main">
-      <Navbar />
-      <Center className="forms-ctn" bg="primary.main" color="text.primary">
+    <Stack width="100%" height="100vh" bg="secondary.main">
+      <Navbar bgProp="secondary.main"/>
+      <Center className="forms-ctn" bg="secondary.main" color="text.primary">
         {isLoading && (
           <div className="loader-container">
             <div className="loader" />
@@ -110,7 +110,7 @@ export const Forms: FormsComponent = ({
                   selectType="noteType"
                 />
               </FormControl>
-              <Button isLoading={isLoading} type="submit" colorScheme="blue">
+              <Button isLoading={isLoading} type="submit" colorScheme="whiteAlpha">
                 Submit
               </Button>
             </Stack>

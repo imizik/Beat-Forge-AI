@@ -11,8 +11,9 @@ import { Link } from 'react-router-dom';
 import { TbSquareRotated } from 'react-icons/tb';
 import { SiDiscogs } from 'react-icons/si';
 import { useState, useEffect } from 'react';
+import { NavBarComponent } from './types';
 
-export const Navbar = () => {
+export const Navbar: NavBarComponent = ({bgProp}) => {
   const breakpoint = useBreakpointValue({ base: '56px', md: '64px' });
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -35,7 +36,7 @@ export const Navbar = () => {
   return (
     <Flex
       as="nav"
-      bg={scrollPosition > 50 ? bgColor : 'primary.main'}
+      bg={scrollPosition > 50 ? bgColor : bgProp}
       color={scrollPosition > 50 ? textColor : 'text.primary'}
       position="sticky"
       top={0}

@@ -6,7 +6,7 @@ const theme = extendTheme({
       main: "#030304",
     },
     secondary: {
-      main: "#37474F",
+      main: "#010e20",
     },
     accent: {
       main: "#212121",
