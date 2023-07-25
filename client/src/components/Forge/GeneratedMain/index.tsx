@@ -12,15 +12,7 @@ import {
 import { useState } from 'react';
 import { EditableArea } from './EditableArea';
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import {
-  FaPlay,
-  FaMeteor,
-  FaMusic,
-  FaChartBar,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-} from 'react-icons/fa';
+import { FaPlay, FaMeteor, FaMusic, FaChartBar } from 'react-icons/fa';
 import { getChordNotes } from '../../../utils/getChordNotes';
 import { useSynth } from '../../../hooks/useSynth';
 import { GeneratedMainComponent } from './types';
@@ -43,7 +35,6 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
     const midiDataUri = generateMidi({
       chordProgression: data.chordProgression,
       timing: data.timing,
-      bpm: data.bpm,
     });
 
     const link = document.createElement('a');
@@ -64,7 +55,6 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
       <Navbar bgProp="secondary.main" />
       <Box
         as="header"
-        d="flex"
         justifyContent="space-between"
         alignItems="center"
         p={5}
@@ -79,7 +69,7 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
       </Box>
       <Box as="main" p={5}>
         <EditableArea data={title} setData={setTitle} />
-        <SimpleGrid columns={2} spacing={10} my={5}>
+        <SimpleGrid columns={2} spacing={10} my={5} color="black">
           <Box
             bg="white"
             p={5}
