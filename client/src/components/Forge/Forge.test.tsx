@@ -1,9 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import Forge from '.';
 import theme from '../../theme'
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
+import { vi } from 'vitest';
+
+vi.mock('tone', () => {
+  return {
+    PolySynth: vi.fn().mockImplementation(() => {
+      return { toDestination: vi.fn() }
+    }),
+    Synth: vi.fn().mockImplementation(() => {
+      return { toDestination: vi.fn() }
+    }),
+  };
+});
 
 
 describe('Forge', () => {
@@ -26,17 +37,22 @@ describe('Forge', () => {
         </BrowserRouter>
       </ChakraProvider>
     );
-
-    // Type into the artist and vibe textareas
-    userEvent.type(screen.getByPlaceholderText('Please enter the name of the artist you want to create a beat in the style of'), 'Test Artist');
-    userEvent.type(screen.getByPlaceholderText('Please describe the vibe or mood you want the beat to have'), 'Test Vibe');
-
-    // Click the submit button
-    userEvent.click(screen.getByRole('button', { name: /submit/i }));
-
-    // Wait for the promise to resolve
-    await screen.findByText('BPM: 120');
-
-    expect(screen.getByText('BPM: 120')).toBeInTheDocument();
+  
+    const artistInput = screen.getByPlaceholderText('Please enter the name of the artist you want to create a beat in the style of');
+    const vibeInput = screen.getByPlaceholderText('Please describe the vibe or mood you want the beat to have');
+    fireEvent.change(artistInput, { target: { value: 'Test Artist' } });
+    fireEvent.change(vibeInput, { target: { value: 'Test Vibe' } });
+  
+    expect(artistInput).toHaveTextContent('Test Artist');
+    expect(vibeInput).toHaveTextContent('Test Vibe');
+  
+    const submitButton = screen.getByText(/Submit/i);
+    fireEvent.click(submitButton);
+  
+    expect(submitButton).toBeDisabled();
+  
+    // Wait for the apicall to resolve, should now render GeneratedMainComponent
+    await waitFor(() => expect(screen.getByText('BPM: 120')).toBeInTheDocument());
   });
+  
 });

@@ -25,7 +25,11 @@ afterEach(() => {
 window.matchMedia = window.matchMedia || function() {
   return {
       matches: false,
-      addListener: function() {},
-      removeListener: function() {}
+      addListener: function() {
+        //needed for tests to function
+      },
+      removeListener: function() {
+        //needed for tests to function
+      }
   };
 };
