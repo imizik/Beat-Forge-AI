@@ -7,15 +7,15 @@ import { FormData } from '../../hooks/types';
 import { GenerationData } from './types';
 
 //MockData
-const mockdata = {
-  artist: "asfasf",
-  vibe: "afsfas",
-  bpm: 120,
-  key: "C Major",
-  chordProgression: ["C","F","G","Am"],
-  bars: 4,
-  timing: ["1m","1m","1m","1m"]
-  }
+// const mockdata = {
+//   artist: "asfasf",
+//   vibe: "afsfas",
+//   bpm: 120,
+//   key: "C Major",
+//   chordProgression: ["C","F","G","Am"],
+//   bars: 4,
+//   timing: ["1m","1m","1m","1m"]
+//   }
 
 function Forge() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,6 +33,7 @@ function Forge() {
 
   const handleSubmit = async (data: FormData) => {
     setIsLoading(true);
+    console.log(data)
     try {
       const response: AxiosResponse<GenerationData> = await axios.post(
         'http://localhost:8080/api/generations',

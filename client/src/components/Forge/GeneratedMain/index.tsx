@@ -1,19 +1,24 @@
 import {
+  Box,
   Button,
-  Stack,
-  Text,
   Flex,
   IconButton,
+  Image,
+  Link,
+  SimpleGrid,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { EditableArea } from './EditableArea';
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import { FaPlay } from 'react-icons/fa';
+import { FaPlay, FaMeteor, FaMusic, FaChartBar } from 'react-icons/fa';
 import { getChordNotes } from '../../../utils/getChordNotes';
 import { useSynth } from '../../../hooks/useSynth';
 import { GeneratedMainComponent } from './types';
 import { Navbar } from '../../Navbar';
 import { generateMidi } from '../../../utils/generateMidi';
+import { Footer } from '../../Footer';
 
 export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
   const [title, setTitle] = useState(`${data.artist}'s ${data.vibe} Song`);
@@ -48,37 +53,81 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
       alignItems="center"
     >
       <Navbar bgProp="secondary.main" />
-      <Stack
-        width="50%"
-        padding={4}
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
+      <Box
+        as="header"
+        justifyContent="space-between"
+        alignItems="center"
+        p={5}
       >
-        <Stack padding={4} marginBottom={4}>
-          <EditableArea data={title} setData={setTitle} />
-          <Text>BPM: {data.bpm}</Text>
-          <Text>Key: {data.key}</Text>
-          <Text>
-            Chord Progression:{' '}
-            {data.chordProgression.map((chord, index) => (
-              <span key={index}>
-                {chord}
-                {index < data.chordProgression.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </Text>
-          <Text>Bars: {data.bars}</Text>
-          <Text>
-            Timing of the chords on the bar:{' '}
-            {data.timing.map((timing, index) => (
-              <span key={index}>
-                {timing}
-                {index < data.timing.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </Text>
-        </Stack>
+        <Image src="/path/to/logo.png" alt="Logo" h="50px" />
+        <Box as="nav">
+          <Link href="#" mr={5}>
+            Home
+          </Link>
+          <Link href="#">About</Link>
+        </Box>
+      </Box>
+      <Box as="main" p={5}>
+        <EditableArea data={title} setData={setTitle} />
+        <SimpleGrid columns={2} spacing={10} my={5} color="black">
+          <Box
+            bg="white"
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            flex="1"
+            borderRadius="md"
+          >
+            <Text>
+              <FaMeteor /> BPM: {data.bpm}
+            </Text>
+          </Box>
+          <Box
+            bg="white"
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            flex="1"
+            borderRadius="md"
+          >
+            <Text>
+              <FaMusic /> Key: {data.key}
+            </Text>
+          </Box>
+          <Box
+            bg="white"
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            flex="1"
+            borderRadius="md"
+          >
+            <Text>
+              <FaChartBar /> Chord Progression:{' '}
+              {data.chordProgression.join(', ')}
+            </Text>
+          </Box>
+          <Box
+            bg="white"
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            flex="1"
+            borderRadius="md"
+          >
+            <Text>Bars: {data.bars}</Text>
+          </Box>
+          <Box
+            bg="white"
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            flex="1"
+            borderRadius="md"
+          >
+            <Text>Timing: {data.timing.join(', ')}</Text>
+          </Box>
+        </SimpleGrid>
         <Flex justify="space-between">
           <IconButton
             aria-label="Go back"
@@ -104,7 +153,8 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
             Play Sound
           </Button>
         </Flex>
-      </Stack>
+      </Box>
+      <Footer />
     </Stack>
   );
 };
