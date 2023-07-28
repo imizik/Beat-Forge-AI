@@ -1,4 +1,12 @@
-import { Stack, HStack, Image, Heading, Grid, GridItem, Box } from '@chakra-ui/react';
+import {
+  Stack,
+  HStack,
+  Image,
+  Heading,
+  Grid,
+  GridItem,
+  Box,
+} from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import wave from '../../assets/synthwaveform.png';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -24,7 +32,12 @@ const LandingContent: React.FC = () => {
 
   return (
     <Stack align="start" bg="primary.main" spacing={0}>
-      <HStack w="100%" h="calc(100vh - 64px)" justify="space-between" position="relative">
+      <HStack
+        w="100%"
+        h="calc(100vh - 64px)"
+        justify="space-between"
+        position="relative"
+      >
         <MotionImage
           src={wave}
           initial="initial"
@@ -90,7 +103,6 @@ const LandingContent: React.FC = () => {
           transform="translateX(-50%)"
         />
       </HStack>
-
     </Stack>
   );
 };
