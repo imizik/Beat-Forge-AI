@@ -15,7 +15,9 @@ import com.beatforge.service.OpenAIService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
+
+
 public class BeatForgeController {
     private final OpenAIService openAIService;
 

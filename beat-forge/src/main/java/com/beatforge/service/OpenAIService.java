@@ -56,7 +56,6 @@ public class OpenAIService {
 
     public String callOpenAI(FormData body) throws IOException {
         String template = generateTemplate(body);
-
         // Create a JSON object for the request body
         String json = new JSONObject()
                 .put("model", "text-davinci-003")
