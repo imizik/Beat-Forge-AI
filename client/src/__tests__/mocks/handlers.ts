@@ -11,7 +11,7 @@ export const handlers = [
       bars: 4,
       timing: ['1m', '1m', '1m', '1m'],
     };
-
+    console.log(req)
     return res(ctx.json(mockData));
   }),
 ];

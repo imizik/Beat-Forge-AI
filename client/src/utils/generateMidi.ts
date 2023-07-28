@@ -16,8 +16,9 @@ export const generateMidi = ({ chordProgression, timing }: MidiGenerationData): 
     if (duration === '1m') { // If the duration is '1m', map it to '1'
       duration = '1';
     }
-    console.log(chordNotes, duration)
-    track.addEvent(new MidiWriter.NoteEvent({ pitch: chordNotes as any, duration: duration as any }));
+      // Need to disable lint due to unavoidable typing issues, despite correct type assertions.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    track.addEvent(new MidiWriter.NoteEvent({ pitch: chordNotes as any, duration: duration as any}));
   });
 
   const write = new MidiWriter.Writer(track);
