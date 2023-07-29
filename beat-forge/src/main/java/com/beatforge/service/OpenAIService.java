@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ public class OpenAIService {
     private String apiKey;
 
     OkHttpClient client = new OkHttpClient();
+
+    private static final Logger logger = LoggerFactory.getLogger(OpenAIService.class);
 
     public String generateTemplate(FormData body) {
         String bpm = body.isBpmEnabled() ? String.valueOf(body.getBpm()) : "";
@@ -55,6 +59,8 @@ public class OpenAIService {
     }
 
     public String callOpenAI(FormData body) throws IOException {
+        logger.info("Received request to generate beat");
+
         String template = generateTemplate(body);
         // Create a JSON object for the request body
         String json = new JSONObject()
@@ -75,6 +81,8 @@ public class OpenAIService {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
+            logger.info("Received response from OpenAI API");
+
             String responseBody = response.body().string();
             JSONObject responseJson = new JSONObject(responseBody);
             JSONArray choices = responseJson.getJSONArray("choices");
@@ -83,6 +91,9 @@ public class OpenAIService {
                 String text = choice.getString("text");
                 return text;
             }
+        } catch (IOException e) {
+            logger.error("Error while calling OpenAI API", e);
+            throw e;
         }
 
         return "";
