@@ -1,0 +1,51 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: imizik/react-forge:latest
+
+    - name: Create Docker container and copy static files
+      run: |
+        docker create --name react-container imizik/react-forge:latest
+        docker cp react-container:/app/dist ./static-files
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: Sync files to S3
+      run: aws s3 sync ./static-files s3://beat-forge-fe
+
+    - name: Invalidate CloudFront cache
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.MY_DISTRIBUTION_ID }} --paths "/*"
+
+    - name: Remove Docker container
+      run: docker rm react-container

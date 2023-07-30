@@ -7,20 +7,20 @@ import { FormData } from '../../hooks/types';
 import { GenerationData } from './types';
 
 //MockData
-const mockdata = {
-  artist: "asfasf",
-  vibe: "afsfas",
-  bpm: 120,
-  key: "C Major",
-  chordProgression: ["C","F","G","Am"],
-  bars: 4,
-  timing: ["1m","1m","1m","1m"]
-  }
+// const mockdata = {
+//   artist: "asfasf",
+//   vibe: "afsfas",
+//   bpm: 120,
+//   key: "C Major",
+//   chordProgression: ["C","F","G","Am"],
+//   bars: 4,
+//   timing: ["1m","1m","1m","1m"]
+//   }
 
 function Forge() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [generatedData, setGeneratedData] = useState<GenerationData | null>(mockdata);
-  const [isGenerated, setIsGenerated] = useState<boolean>(true);
+  const [generatedData, setGeneratedData] = useState<GenerationData | null>(null);
+  const [isGenerated, setIsGenerated] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     artist: '',
     vibe: '',

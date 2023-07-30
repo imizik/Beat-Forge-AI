@@ -14,16 +14,19 @@ RUN npm install
 RUN npm run build
 
 # Use an official Ubuntu runtime as the base image
-FROM ubuntu
+# FROM ubuntu
 
-# Update Ubuntu and install nginx
-RUN apt-get update && apt-get install nginx -y
+# # Update Ubuntu and install nginx
+# RUN apt-get update && apt-get install nginx -y
 
-# Copy the built application from the build stage to the nginx directory
-COPY --from=build /app/dist /var/www/html/
+# # Copy the built application from the build stage to the nginx directory
+# COPY --from=build /app/dist /var/www/html/
 
-# Make port 80 available outside the container
-EXPOSE 80
+# # Copy the Nginx configuration file
+# COPY nginx.conf /etc/nginx/sites-enabled/default
 
-# Run nginx
-CMD ["nginx","-g","daemon off;"]
+# # Make port 80 available outside the container
+# EXPOSE 80
+
+# # Run nginx
+# CMD ["nginx","-g","daemon off;"]
