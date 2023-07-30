@@ -1,14 +1,17 @@
 name: Deploy to AWS
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - main
     paths:
       - 'client/**'
 
+
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
