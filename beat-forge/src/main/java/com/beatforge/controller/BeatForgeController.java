@@ -44,6 +44,6 @@ public class BeatForgeController {
     @GetMapping("/")
     public String helloWorld() {
         logger.info("Receive req forr hello world");
-        return "Hello Worl!";
+        return "Hello World!";
     }
 }
