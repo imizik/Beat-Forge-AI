@@ -33,10 +33,9 @@ function Forge() {
 
   const handleSubmit = async (data: FormData) => {
     setIsLoading(true);
-    console.log(data)
     try {
       const response: AxiosResponse<GenerationData> = await axios.post(
-        'http://localhost:8080/api/generations',
+        `${import.meta.env.VITE_API_URL}/api/generations`,
         data
       );
       setGeneratedData(response.data);
