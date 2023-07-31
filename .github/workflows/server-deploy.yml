@@ -35,6 +35,14 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
+    - name: List workspace contents and run Gradle build
+      run: |
+        ls -la
+        ls -la ./beat-forge
+        (cd ./beat-forge && ./gradlew clean build)
+        ls -la ./beat-forge/build
+        ls -la ./beat-forge/build/libs
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
