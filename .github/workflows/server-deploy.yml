@@ -1,19 +1,16 @@
 name: Server Deploy to EC2
 
 on:
-  # pull_request:
-  #   types: [closed]
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'beat-forge/**'
-  push:
+  pull_request:
+    types: [closed]
     branches:
-      - "main"
+      - main
+    paths:
+      - 'beat-forge/**'
 
 jobs:
   deploy:
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
