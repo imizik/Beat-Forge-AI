@@ -29,10 +29,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: List files
+    - name: List workspace contents and run Gradle build
       run: |
-        pwd
-        ls -R
+        ls -la
+        ls -la ./beat-forge
+        (cd ./beat-forge && ./gradlew clean build)
+        ls -la ./beat-forge/build
+        ls -la ./beat-forge/build/libs
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
@@ -40,15 +43,10 @@ jobs:
         context: ./beat-forge
         push: true
         tags: imizik/forge-server:latest
-        build-args: OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}, CACHEBUST=$(date +%s)
+        build-args: OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-    - name: List files
-      run: |
-        pwd
-        ls -R
-        
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
