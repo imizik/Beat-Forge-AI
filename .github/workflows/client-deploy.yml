@@ -1,4 +1,4 @@
-name: Deploy to AWS
+name: Client Deploy to S3/Cloudfront
 
 on:
   pull_request:
