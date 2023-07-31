@@ -37,11 +37,8 @@ jobs:
 
     - name: List workspace contents and run Gradle build
       run: |
-        ls -la
-        ls -la ./beat-forge
-        (cd ./beat-forge && ./gradlew clean build)
-        ls -la ./beat-forge/build
-        ls -la ./beat-forge/build/libs
+        cd ./beat-forge
+
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
