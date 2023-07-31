@@ -35,7 +35,7 @@ jobs:
         context: ./beat-forge
         push: true
         tags: imizik/forge-server:latest
-        build-args: OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+        build-args: OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}, CACHEBUST=$(date +%s)
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
