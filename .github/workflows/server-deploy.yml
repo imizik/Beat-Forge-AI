@@ -29,6 +29,11 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: List files
+      run: |
+        pwd
+        ls -R
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
@@ -39,6 +44,11 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
+    - name: List files
+      run: |
+        pwd
+        ls -R
+        
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
