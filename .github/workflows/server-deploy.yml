@@ -37,7 +37,9 @@ jobs:
 
     - name: List workspace contents and run Gradle build
       run: |
+        pwd
         cd ./beat-forge
+        pwd
 
 
     - name: Build and push Docker image
@@ -56,7 +58,7 @@ jobs:
 
     - name: Update Security Group
       run: |
-        aws ec2 authorize-security-group-ingress --group-id sgr-07e99244415a5bd7b --protocol tcp --port 22 --cidr ${{ steps.get_runner_ip.outputs.ipv4 }}/32
+        aws ec2 authorize-security-group-ingress --group-id sg-0fd866d758fbd8e29 --protocol tcp --port 22 --cidr ${{ steps.get_runner_ip.outputs.ipv4 }}/32
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -76,7 +78,7 @@ jobs:
 
     - name: Revoke Security Group Access
       run: |
-        aws ec2 revoke-security-group-ingress --group-id sgr-07e99244415a5bd7b --protocol tcp --port 22 --cidr ${{ steps.get_runner_ip.outputs.ipv4 }}/32
+        aws ec2 revoke-security-group-ingress --group-id sg-0fd866d758fbd8e29 --protocol tcp --port 22 --cidr ${{ steps.get_runner_ip.outputs.ipv4 }}/32
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
