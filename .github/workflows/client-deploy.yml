@@ -33,6 +33,7 @@ jobs:
         context: ./client
         push: true
         tags: imizik/react-forge:latest
+        build-args: VITE_API_URL=${{ secrets.VITE_API_URL }}
 
     - name: Create Docker container and copy static files
       run: |
