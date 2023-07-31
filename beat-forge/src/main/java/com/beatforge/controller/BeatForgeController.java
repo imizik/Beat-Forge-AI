@@ -31,7 +31,7 @@ public class BeatForgeController {
     @PostMapping("/generations")
     public ResponseEntity<String> generateBeat(@RequestBody FormData body) {
         try {
-            logger.info("Received reques to generate beat: {}", body);
+            logger.info("Received req to generate beat: {}", body);
             String result = openAIService.callOpenAI(body);
             logger.info("Generated beat: {}", result);
             return ResponseEntity.ok(result);
