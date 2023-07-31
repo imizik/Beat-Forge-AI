@@ -31,7 +31,7 @@ jobs:
       with:
         context: ./beat-forge
         push: true
-        tags: imizik/your-image-name:latest
+        tags: imizik/forge-server:latest
 
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
@@ -40,7 +40,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull your-dockerhub-username/your-image-name:latest
-          docker stop my-running-app
-          docker rm my-running-app
-          docker run -d -p 8080:8080 --name my-running-app your-dockerhub-username/your-image-name:latest
+          docker pull imizik/forge-server:latest
+          docker stop forge-server
+          docker rm forge-server
+          docker run -d -p 8080:8080 --name forge-server imizik/forge-server:latest
