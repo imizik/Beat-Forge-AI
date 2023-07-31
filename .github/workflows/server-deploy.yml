@@ -37,9 +37,7 @@ jobs:
 
     - name: List workspace contents and run Gradle build
       run: |
-        pwd
-        cd ./beat-forge
-        pwd
+        (cd ./beat-forge && ./gradlew clean build)
 
 
     - name: Build and push Docker image
