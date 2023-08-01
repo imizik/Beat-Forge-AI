@@ -6,8 +6,6 @@ import { Footer } from '../Footer';
 // import CTASection from './CTASection';
 
 export const LandingPage = () => {
-  console.log(import.meta.env.VITE_API_URL)
-
   return (
     <VStack align="start" bg="primary.main" spacing={0} width="100%">
       <Navbar bgProp="primary.main"/>
