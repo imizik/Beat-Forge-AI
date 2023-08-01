@@ -4,7 +4,6 @@ import LandingDesc from './LandingDesc';
 import MainSection from './MainSection';
 import { Footer } from '../Footer';
 // import CTASection from './CTASection';
-// import Footer from './Footer';
 
 export const LandingPage = () => {
   console.log(import.meta.env.VITE_API_URL)
