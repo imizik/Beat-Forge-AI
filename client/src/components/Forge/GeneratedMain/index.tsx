@@ -1,18 +1,15 @@
-import {
-  Box,
-  Button,
-  Flex,
-  IconButton,
-  Image,
-  Link,
-  SimpleGrid,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Button, Flex, IconButton, Stack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { EditableArea } from './EditableArea';
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import { FaPlay, FaMeteor, FaMusic, FaChartBar } from 'react-icons/fa';
+import {
+  FaPlay,
+  FaMeteor,
+  FaMusic,
+  FaChartBar,
+  FaBars,
+  FaClock,
+} from 'react-icons/fa';
 import { getChordNotes } from '../../../utils/getChordNotes';
 import { useSynth } from '../../../hooks/useSynth';
 import { GeneratedMainComponent } from './types';
@@ -55,43 +52,72 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
       minHeight="100vh"
     >
       <Navbar bgProp="secondary.main" />
-      <Stack className="stack-ctn">
-      <div>Generated Beat Information:</div>
+      <Stack width="50%">
+        <div>Generated Beat Information:</div>
 
-        <Box
-          p={5}
+        <Stack
+          p={10}
           shadow="md"
           borderWidth="1px"
           borderRadius="md"
           mx={10}
+          height="55vh"
+          justifyContent="space-between"
         >
           <EditableArea data={title} setData={setTitle} />
-          <Flex flexDirection="column" alignItems="flex-start" spacing={3}>
-            <Text>
-              <FaMeteor /> BPM: {data.bpm}
-            </Text>
-            <Text>
-              <FaMusic /> Key: {data.key}
-            </Text>
-            <Text>
-              <FaChartBar /> Chords: {data.chordProgression.join(', ')}
-            </Text>
-            <Text>Bars: {data.bars}</Text>
-            <Text>Timing: {data.timing.join(', ')}</Text>
+          <Flex flexDirection="row" justifyContent="space-between" height="50%">
+            <Flex flexDirection="column" alignItems="flex-start">
+              <Flex flexDirection="row" alignItems="center">
+                <FaMeteor size="1.5em" />
+                <Text fontSize="2xl" ml={2}>
+                  BPM: {data.bpm}
+                </Text>
+              </Flex>
+              <Flex flexDirection="row" alignItems="center">
+                <FaMusic size="1.5em" />
+                <Text fontSize="2xl" ml={2}>
+                  Key: {data.key}
+                </Text>
+              </Flex>
+            </Flex>
+            <Flex flexDirection="column" alignItems="flex-start">
+              <Flex flexDirection="row" alignItems="center">
+                <FaChartBar size="1.5em" />
+                <Text fontSize="xl" ml={2}>
+                  Chords: {data.chordProgression.join(', ')}
+                </Text>
+              </Flex>
+              <Flex flexDirection="row" alignItems="center">
+                <FaBars size="1.5em" />
+                <Text fontSize="xl" ml={2}>
+                  Bars: {data.bars}
+                </Text>
+              </Flex>
+              <Flex flexDirection="row" alignItems="center">
+                <FaClock size="1.5em" />
+                <Text fontSize="xl" ml={2}>
+                  Timing: {data.timing.join(', ')}
+                </Text>
+              </Flex>
+            </Flex>
           </Flex>
+          {/* Add extra content here if needed to fill up space */}
           <Flex justify="space-between" mt={5}>
             <IconButton
               aria-label="Go back"
-              icon={<ArrowBackIcon />}
+              icon={<ArrowBackIcon boxSize="24px"/>}
               colorScheme="whiteAlpha"
               variant="ghost"
               onClick={onGoBack}
               _hover={{ color: 'teal.500' }}
+              width="25%"
             />
             <Button
               colorScheme="purple"
               onClick={handleMidiGenerateClick}
               _hover={{ bg: 'purple.500' }}
+              width="25%"
+
             >
               Generate MIDI
             </Button>
@@ -100,11 +126,13 @@ export const GeneratedMain: GeneratedMainComponent = ({ data, onGoBack }) => {
               colorScheme="purple"
               onClick={handleGenerateClick}
               _hover={{ bg: 'purple.500' }}
+              width="25%"
+
             >
               Play Sound
             </Button>
           </Flex>
-        </Box>
+        </Stack>
       </Stack>
       <Footer />
     </Stack>

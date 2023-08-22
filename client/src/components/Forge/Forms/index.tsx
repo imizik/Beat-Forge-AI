@@ -17,6 +17,7 @@ import {
   useHandleSubmit,
 } from '../../../hooks/useForms';
 import { Navbar } from '../../Navbar';
+import { Footer } from '../../Footer';
 
 export const Forms: FormsComponent = ({
   onSubmit,
@@ -29,15 +30,15 @@ export const Forms: FormsComponent = ({
   const handleSubmit = useHandleSubmit(onSubmit, formData);
 
   return (
-    <Stack width="100%" height="100vh" bg="secondary.main">
-      <Navbar bgProp="secondary.main"/>
+    <Stack width="100%" bg="secondary.main" minHeight="100vh">
+      <Navbar bgProp="secondary.main" />
       <Center className="forms-ctn" bg="secondary.main" color="text.primary">
         {isLoading && (
           <div className="loader-container">
             <div className="loader" />
           </div>
         )}
-        <Stack className="stack-ctn">
+        <Stack width="50%">
           <div>Please Enter All Information Below:</div>
           <form onSubmit={handleSubmit}>
             <Stack
@@ -110,13 +111,18 @@ export const Forms: FormsComponent = ({
                   selectType="noteType"
                 />
               </FormControl>
-              <Button isLoading={isLoading} type="submit" colorScheme="whiteAlpha">
+              <Button
+                isLoading={isLoading}
+                type="submit"
+                colorScheme="whiteAlpha"
+              >
                 Submit
               </Button>
             </Stack>
           </form>
         </Stack>
       </Center>
+      <Footer />
     </Stack>
   );
 };
